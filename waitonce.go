@@ -14,7 +14,7 @@ type WaitOnce struct {
 	notifyChan chan struct{}
 }
 
-func GetOrCreateWaitOnce(name string) *WaitOnce {
+func GetOrCreate(name string) *WaitOnce {
 	loaded, ok := allWaitOnce.Load(name)
 	if ok {
 		return loaded.(*WaitOnce)

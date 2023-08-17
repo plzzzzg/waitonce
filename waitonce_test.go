@@ -16,7 +16,7 @@ func TestWaitOnce(t *testing.T) {
 		wg.Add(1)
 		go func(i int) {
 			defer wg.Done()
-			timeout := GetOrCreateWaitOnce(waitOnceID).Wait(time.Second)
+			timeout := GetOrCreate(waitOnceID).Wait(time.Second)
 			if timeout {
 				return
 			}
@@ -33,7 +33,7 @@ func TestWaitOnce(t *testing.T) {
 		lock.Lock()
 		l = append(l, -1)
 		lock.Unlock()
-		GetOrCreateWaitOnce(waitOnceID).Done()
+		GetOrCreate(waitOnceID).Done()
 	}()
 
 	wg.Wait()
@@ -52,7 +52,7 @@ func TestWaitOnceTimeout(t *testing.T) {
 		wg.Add(1)
 		go func(i int) {
 			defer wg.Done()
-			timeout := GetOrCreateWaitOnce(waitOnceID).Wait(time.Millisecond * time.Duration(i*100))
+			timeout := GetOrCreate(waitOnceID).Wait(time.Millisecond * time.Duration(i*100))
 			if timeout {
 				return
 			}
@@ -69,7 +69,7 @@ func TestWaitOnceTimeout(t *testing.T) {
 		lock.Lock()
 		l = append(l, -1)
 		lock.Unlock()
-		GetOrCreateWaitOnce(waitOnceID).Done()
+		GetOrCreate(waitOnceID).Done()
 	}()
 
 	wg.Wait()
@@ -82,7 +82,7 @@ func ExampleGetOrCreateWaitOnce() {
 	waitOnceID := "preload"
 
 	go func() {
-		if timeout := GetOrCreateWaitOnce(waitOnceID).Wait(time.Second); timeout {
+		if timeout := GetOrCreate(waitOnceID).Wait(time.Second); timeout {
 			// fallback when fallback
 		} else {
 			// do something after preloading done
@@ -93,6 +93,6 @@ func ExampleGetOrCreateWaitOnce() {
 	go func() {
 		// preloading
 		time.Sleep(time.Second)
-		GetOrCreateWaitOnce(waitOnceID).Done()
+		GetOrCreate(waitOnceID).Done()
 	}()
 }

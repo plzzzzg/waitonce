@@ -28,7 +28,7 @@ func main() {
 	waitOnceID := "preload"
 
 	go func() {
-		if timeout := waitonce.GetOrCreateWaitOnce(waitOnceID).Wait(time.Second); timeout {
+		if timeout := waitonce.GetOrCreate(waitOnceID).Wait(time.Second); timeout {
 			// fallback when timeout
 		} else {
 			// do something after preloading done
@@ -39,7 +39,7 @@ func main() {
 	go func() {
 		// preloading
 		time.Sleep(time.Second)
-		waitonce.GetOrCreateWaitOnce(waitOnceID).Done()
+		waitonce.GetOrCreate(waitOnceID).Done()
 	}()
 }
 
