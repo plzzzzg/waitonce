@@ -29,7 +29,7 @@ func main() {
 
 	go func() {
 		if timeout := waitonce.GetOrCreateWaitOnce(waitOnceID).Wait(time.Second); timeout {
-			// fallback when fallback
+			// fallback when timeout
 		} else {
 			// do something after preloading done
 		}
