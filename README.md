@@ -1,4 +1,7 @@
 # WaitOnce
+[![Go](https://github.com/plzzzzg/waitonce/actions/workflows/go.yml/badge.svg)](https://github.com/plzzzzg/waitonce/actions/workflows/go.yml)
+[![Go Report Card](https://goreportcard.com/badge/github.com/plzzzzg/waitonce)](https://goreportcard.com/report/github.com/plzzzzg/waitonce)
+[![codecov](https://codecov.io/gh/plzzzzg/waitonce/branch/master/graph/badge.svg)](https://codecov.io/gh/plzzzzg/waitonce)
 
 WaitOnce is a simple tool that ensures the prerequisites are ready.
 
