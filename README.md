@@ -10,7 +10,7 @@ WaitOnce is a simple tool that ensures the prerequisites are ready.
 ## Install
 
 ```shell
-go insall github.com/plzzzzg/waitonce
+go get github.com/plzzzzg/waitonce
 ```
 
 
